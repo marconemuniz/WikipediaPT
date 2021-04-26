@@ -28,18 +28,19 @@ public class Artigo {
         driver.manage().timeouts().implicitlyWait(60000, TimeUnit.MILLISECONDS);
     }
 
-    @Test               // Durante o Teste
+    @Test   // Durante o Teste
     public void consultarArtigo(){
         // Abrir o site
         driver.get(url);
 
         // Pesquisar por "Ovo de Pascoa"
-        driver.findElement(By.name("search")).sendKeys("Ovos de Páscoa" + Keys.ENTER);
-        //driver.findElement(By.name("search")).click();
+        driver.findElement(By.id("searchInput")).sendKeys("Ovo de Páscoa");
+        //driver.findElement(By.id("searchButton")).click();
+        driver.findElement(By.cssSelector("button.wvui-button")).click();
 
         // Validar o título da página de retorno
         //assertEquals("Ovo de Páscoa - Wikipédia, a enciclopédia livre", driver.getTitle());
-        assertTrue(driver.getTitle().contains("Ovo_de_Páscoa"));
+        assertTrue(driver.getTitle().contains("Ovo de Páscoa"));
     }
 
     @After              // Depois do Teste
